@@ -24,7 +24,15 @@
 
 <script id="listTemplate" type="text/template">
   <% _.each(listData, function (ld) { %>
-    <li class='list-group-item listItem'><button type='button' class='btn btn-danger deleteButton'>remove</button>&nbsp;&nbsp;<%= ld %></li>
+      <% if (ld.checked) { %>
+        <li class='list-group-item listItem grayBG'>
+         <button type='button' data-position='<%= ld.position %>' class='btn btn-danger deleteButton'>remove</button>&nbsp;&nbsp;<span><%= ld.name %></span>
+        </li>
+      <% } else { %>
+        <li class='list-group-item listItem'>
+          <button type='button' data-position='<%= ld.position %>' class='btn btn-danger deleteButton'>remove</button>&nbsp;&nbsp;<span><%= ld.name %></span>
+        </li>
+      <% } %>
   <% }); %>
 </script>
 </body>
